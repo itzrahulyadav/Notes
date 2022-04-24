@@ -1,0 +1,76 @@
+how to connect to mongodb 
+
+step 1. import mongoose from npm
+using npm i mongoose
+
+
+// connecting to mongodb atlas
+
+step2. use mongoose.connect(<the link that you got from mongodb atlas -connect to projct> see step 10);
+
+step3.go to mongodb atlas and login
+
+step4.create on new project
+
+step5.select the free version and add new user and password 
+
+step6.in the accessible ip addresses use 0.0.0.0/0
+
+step7.now click on connect and choose mongodb compass
+
+step 8. open mongodb compass and in new connection paste the link that you just copied from the mongodb atlas
+and replace the password with your password and click on create db
+
+step9.create new db and give it a name and create collection as well
+
+step 10.now to get the link for step2 click on connect project and copy the link and paste it in the original code 
+also replace the password and db name .
+
+step 11.
+
+// create a db schema in mongodb in a separate file
+
+const mongoose = require('mongoose');
+
+const FoodSchema = new mongoose.Schema({
+    foodName:{
+        type:String,
+        required:true
+    },
+    daysSinceIAte:{
+        type:Number,
+        required:true
+    }
+})
+
+const Food = mongoose.model("FoodData",FoodSchema)
+
+module.exports = Food;
+
+step 12. import the above schema in the main file
+example import food = require(directory);
+
+step 13.post data into mongodb
+
+axios.post(<url>,{property1:value,property2:value});
+// in express recieve above value like
+
+app.post("<url>",(req,res)=>{
+    const property1 = req.body.property1;
+    const property2 = req.body.property2;
+
+    const db = new food({property1:property1,property2:property2});
+    db.save();
+})
+
+step 14.delete data from mongodb;
+
+axios.delete(<url/delete/id>)
+
+in the server folder
+app.delete('/delete/:id',{req,res}=>{
+    const id = req.params.id;
+    modelName.findByIdAndDelete(id).exec();
+})
+
+:) happy coding ❤
