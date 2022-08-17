@@ -481,7 +481,8 @@ class Solution {
         return false;
     }
 
-    // Function to detect cycle in a directed graph.
+    // Function to detect cycle in a dire
+    cted graph.
     public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
         // marking all vertices as not visited and not a part of recursion stack
         boolean[] visited = new boolean[V];

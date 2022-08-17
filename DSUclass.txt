@@ -1,0 +1,38 @@
+class DSU
+{
+    int[]parent;
+    int[]rank;
+
+    public DSU(int size)
+    {
+        this.parent = new int[size];
+        for(int i = 0;i < size;i++)parent[i] = i;
+        this.rank = new int[size];
+    }
+    public find_parent(int x)
+    {
+        if(parent[x] == x)return x;
+        return parent[x] = find_parent(parent[x]);
+    }
+    public boolean union(int a,int b)
+    {
+        int a_parent = find_parent(a);
+        int b_parent = find_parent(b);
+
+        if(a_parent == b_parent)return false;
+
+        if(rank[a_parent] < rank[b_parent])
+        {
+            parent[a_parent] = b_parent;
+        }
+        else if(rank[b_parent] < rank[a_parent])
+        {
+            parent[b_parent] = a_parent;
+        }
+        else
+        {
+            parent[b_parent] = a_parent;
+            rank[a_parent]++;
+        }
+    }
+}
